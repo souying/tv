@@ -1,0 +1,638 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="搜影九号音乐视频导航,搜影吧,音乐导航,视频导航,娱乐导航,网站导航,网址导航">
+		<meta name="Description" content="搜影九号音乐视频导航,搜影吧,音乐导航,视频导航,娱乐导航,网站导航,网址导航">
+		<link rel="Shortcut Icon" href="https://qzonestyle.gtimg.cn/qz-proj/fm-official-website/img/favicon.ico?max_age=31536000" type="image/x-icon" />
+		<title>搜影九号音乐视频导航</title>
+		<script src="./jquery-1.11.3.min.js"></script>
+		<style>
+		*{margin:0;padding:0;}
+		a{
+			text-decoration:none;
+			color:#fff;
+		}
+		html,body{width:100%;height:100%;}
+		body{
+		background:url('images/bg_pic1.jpg') no-repeat center top;
+		background-size:cover;/*图片等比例的填充整个容器*/
+		}
+		.position {
+		  margin-left: auto;
+		  margin-right: auto;
+		  text-align: center;
+		  margin-top:10px;
+		}
+
+		#workarea {
+		  position: absolute;
+		  width: 100%;
+		  height: 10%;
+		  /*background-color: #1e1a3e;*/
+		  font-family: Raleway;
+		}
+
+		#personal {
+		  color:white;
+		  text-decoration:none;
+		  position:absolute;
+		  bottom:15px;
+		  right:2%;
+		}
+		.spot {
+		  position: absolute;
+		  width: 100%;
+		  height: 100%;
+		  top: 0;
+		  left: 0;
+		}
+		.svg-wrapper {
+		  margin-top: 0;
+		  position: relative;
+		  width: 150px;
+		  height: 40px;
+		  display: inline-block;
+		  border-radius: 3px;
+		  margin-left: 5px;
+		  margin-right: 5px
+		}
+		#shape {
+		  stroke-width: 6px;
+		  fill: transparent;
+		  stroke: #009FFD;
+		  stroke-dasharray: 85 400;
+		  stroke-dashoffset: -220;
+		  transition: 1s all ease;
+		}
+		#text {
+		  margin-top: -35px;
+		  text-align: center;
+		}
+
+		#text a {
+		  color: #E308D6;
+		  text-decoration: none;
+		  font-weight: 100;
+		  font-size: 1.1em;
+		}
+		.svg-wrapper:hover #shape {
+		  stroke-dasharray: 50 0;
+		  stroke-width: 3px;
+		  stroke-dashoffset: 0;
+		  stroke: #06D6A0;
+		}
+		.hf{
+			width:70px;
+			height:30px;
+			background:rgba(240,90,80,0.5);
+			border-radius:5px;
+			text-align:center;
+			line-height:30px;
+			font-size:14px;
+			color:#fff;
+			font-family:'微软雅黑';
+			font-weight:700;
+			cursor:pointer;
+			position:fixed;
+			right:30px;
+			top:30px;
+		}
+		.bg-nav{
+			width:100%;
+			height:0px;
+			overflow:hidden;
+			background:rgba(0,0,0,0.3);
+			position:fixed;
+			z-index:99;
+			left:0;
+			top:0;
+			transition: all 500ms ease 0s;
+			/* Firefox 4 */
+            -moz-transition:all 500ms ease 0s;
+            /* Safari and Chrome */
+            -webkit-transition:all 500ms ease 0s;
+            /* Opera */
+            -o-transition:all 500ms ease 0s;
+		
+		}
+		.bg-nav .pic{
+			width:1000px;
+			height:300px;
+			margin:50px auto 0;
+		}
+		.bg-nav .pic ul li{
+			list-style:none;
+			width:170px;
+			height:110px;
+			background:#fff;
+			float:left;
+			margin:5px 10px;
+			padding:5px;
+			box-shadow:1px 1px 2px 2px #a4a4a4;
+			position:relative;
+		}
+		.bg-nav .pic ul li img{
+			width:170px;
+			height:110px;
+		}
+		.bg-nav .pic ul li i{
+			display:block;
+			width:17px;
+			height:17px;
+			background:url('images/ioc.png') 80px 0px;
+			position:absolute;
+			right:10px;
+			bottom:10px;
+			display:none;
+		}
+		.bg-nav .pic ul li.active i{
+			display:block;
+		}
+		.mokuai1{
+			width:1010px;
+			height:620px;
+			margin:0 auto;
+		}
+		.mokuai1_top{
+			width:100%;
+			height:60px;
+		}
+		.mokuai1_con{
+			width:100%;
+			height:530px;
+		}
+		.item{
+			display:block;
+			width:240px;
+			height:120px;
+			position:relative;
+			border:1px solid transparent;
+			float:left;
+			margin:5px;
+		}
+		.item>img{
+    		border: medium none;
+    		height: 120px;
+    		overflow: hidden;
+    		width: 240px;
+		}
+		.item>span{
+			display:block;
+			height:0px;
+			width:240px;
+			text-align:center;
+			line-height:20px;
+			font-size:14px;
+			overflow:hidden;
+			background:rgba(0,0,0,0.8);
+			position:absolute;
+			bottom:0px;
+			transition: all 500ms ease 0s;
+			/* Firefox 4 */
+            -moz-transition:all 500ms ease 0s;
+            /* Safari and Chrome */
+            -webkit-transition:all 500ms ease 0s;
+            /* Opera */
+            -o-transition:all 500ms ease 0s;
+		}
+		.item:hover>span{
+			height:20px;
+		}
+		.item:hover{
+			border:1px solid #fff;
+		}
+		.xuanxiang{
+			width:180px;
+			height:10px;
+			margin:0 auto;
+			margin-top:-20px;
+		}
+		.dian{
+			display:inline-block;
+			width:50px;
+			height:10px;
+			cursor:pointer;
+			border-radius:3px;
+			background:#227CC0;
+		}
+		.dian1{
+			background:#E4393C;
+		}
+		.rm{
+			display:none;
+		}
+		.zhao{
+			width:100%;
+			height:100%;
+			background:rgba(0,0,0,0.5);
+			position:absolute;
+			top:0;
+			left:0;
+			display:none;
+			
+		}
+		.show{
+			width:900px;
+			height:550px;
+			margin:0px auto;
+		}
+		.show_top{
+			width:100%;
+			height:60px;
+		}
+		.show_con{
+			width:100%;
+			height:520px;
+			border:5px solid #fff;
+			border-radius:10px;
+		}
+		.dianwo{
+			font-size:60px;
+			color:#fff;
+			position:absolute;
+			top:50px;
+			right:100px;
+			cursor:pointer;
+		}
+		</style>
+	</head>
+	<body>
+	<div class="nav">
+		<div id="workarea">
+		  <div class="position">
+		    <div class="svg-wrapper">
+		      <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+		        <rect id="shape" height="40" width="150" />
+		        <div id="text">
+		          <a href=""><span class="spot"></span>首页</a>
+		        </div>
+		      </svg>
+		    </div>
+		    <!--Next button -->
+		    <div class="svg-wrapper">
+		      <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+		        <rect id="shape" height="40" width="150" />
+		        <div id="text">
+		          <a href=""><span class="spot"></span>音乐</a>
+		        </div>
+		      </svg>
+		    </div>
+		    <!--Next button -->
+		    <div class="svg-wrapper">
+		      <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+		        <rect id="shape" height="40" width="150" />
+		        <div id="text">
+		          <a href=""><span class="spot"></span>点播</a>
+		        </div>
+		      </svg>
+		    </div>
+	    <!--End button -->
+
+	  </div>
+	</div>
+		<div class="hf">换肤</div>
+		<div class="bg-nav">
+			<div class="pic">
+				<ul>
+					<li  class="active" tagesrc="bg_pic1.jpg">
+						<img src="images/nav_pic1.jpg" width="260" height="163" alt="美女" />
+						<i></i>
+					</li>
+					<li tagesrc="bg_pic2.jpg">
+						<img src="images/nav_pic2.jpg" width="260" height="163" alt="美女" />
+						<i></i>
+					</li>
+					<li tagesrc="bg_pic3.jpg">
+						<img src="images/nav_pic3.jpg" width="260" height="163" alt="美女" />
+						<i></i>
+					</li>
+					<li tagesrc="bg_pic4.jpg">
+						<img src="images/nav_pic4.jpg" width="260" height="163" alt="美女" />
+						<i></i>
+					</li>
+					<li tagesrc="bg_pic5.jpg">
+						<img src="images/nav_pic5.jpg" width="260" height="163" alt="美女" />
+						<i></i>
+					</li>
+					<li tagesrc="bg_pic6.jpg">
+						<img src="images/nav_pic6.jpg" width="260" height="163" alt="美女" />
+						<i></i>
+					</li>
+					<li tagesrc="bg_pic7.jpg">
+						<img src="images/nav_pic7.jpg" width="260" height="163" alt="美女" />
+						<i></i>
+					</li>
+					<li tagesrc="bg_pic8.jpg">
+						<img src="images/nav_pic8.jpg" width="260" height="163" alt="美女" />
+						<i></i>
+					</li>
+					<li tagesrc="bg_pic9.jpg">
+						<img src="images/nav_pic9.jpg" width="260" height="163" alt="美女" />
+						<i></i>
+					</li>
+					<li tagesrc="bg_pic10.jpg">
+						<img src="images/nav_pic10.jpg" width="260" height="163" alt="美女" />
+						<i></i>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="mokuai1">
+			<div class="mokuai1_top"></div>
+			<div class="mokuai1_con">
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/sohu.jpg" alt="搜狐视频">
+					<span>搜狐视频</span>
+					<i class="http://tv.sohu.com/upload/360/index.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/fmbaidu.jpg" alt="百度随心听">
+					<span>百度随心听</span>
+					<i class="http://fm.baidu.com/?embed=hao123"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/gequ.png" alt="每日一歌">
+					<span>每日一歌</span>
+					<i class="http://music.lanyes.org/flashmp3/player.swf?skin=1qwe.zip&auto_play=1&auto_open=1"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/kugoufm.jpg" alt="酷狗电台">
+					<span>酷狗电台</span>
+					<i class="http://web.kugou.com/hao123.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/kuwofm.jpg" alt="酷我电台">
+					<span>酷我电台</span>
+					<i class="http://player.kuwo.cn/webmusic/web/play?f=hao123"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/1ting.jpg" alt="一听音乐">
+					<span>一听音乐</span>
+					<i class="http://www.1ting.com/api/hao123"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/yy520.jpg" alt="歪歪520">
+					<span>歪歪520</span>
+					<i class="http://yy.com/s/520/1957289208/mini.swf"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/beva.jpg" alt="贝瓦电台">
+					<span>贝瓦电台</span>
+					<i class="http://app.beva.com/hao123/fm/index.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/douban.jpg" alt="豆瓣FM">
+					<span>豆瓣FM</span>
+					<i class="http://douban.fm/partner/playerhao123"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/xiamifm.jpg" alt="虾米电台">
+					<span>虾米电台</span>
+					<i class="http://www.xiami.com/kuang/hao123"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/fengyunzhibo.jpg" alt="风云直播">
+					<span>风云直播</span>
+					<i class="http://dh.8pawn.net/an1/dcr/ys/apps/fengyunzhibo.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/xunlei.png" alt="迅雷看看">
+					<span>迅雷看看</span>
+					<i class="http://recommend.xunlei.com/topic360_409.html?id=731012"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/uusee.jpg" alt="UUSee网络电视">
+					<span>UUSee网络电视</span>
+					<i class="http://player.uusee.com/apps/baidu/index.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/imgo.jpg" alt="芒果TV">
+					<span>芒果TV</span>
+					<i class="http://dh.8pawn.net/tvdh/html/imgo.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/pptv.jpg" alt="pptv直播">
+					<span>pptv直播</span>
+					<i class="http://app.aplus.pptv.com/tgapp/baidu/live/main?s_param=6203&bd_user=0&bd_sig=0a6d47dd4fef88d8d51a7ce01b6def33&canvas_pos=platform"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/letvlive.jpg" alt="乐视直播">
+					<span>乐视直播</span>
+					<i class="http://www.letvlive.com/tvlive.php"></i>
+				</a>
+			</div>
+		</div>
+		<div class="mokuai1 rm">
+			<div class="mokuai1_top"></div>
+			<div class="mokuai1_con">
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/cietv.jpg" alt="易视直播">
+					<span>易视直播</span>
+					<i class="http://www.cietv.com/images/img/100"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/ifeng.jpg" alt="凤凰视频">
+					<span>凤凰视频</span>
+					<i class="http://v.ifeng.com/app/baidu/fhsp/index-800.shtml"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/iqiyi.jpg" alt="爱奇艺">
+					<span>爱奇艺</span>
+					<i class="http://www.iqiyi.com/mini/home800.html?app800&bd_user=0&bd_sig=a9da9b9a01fa5ba43e89215f277a2930&canvas_pos=platform"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/xiami.jpg" alt="虾米音乐">
+					<span>虾米音乐</span>
+					<i class="http://www.xiami.com/player/hao123"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/duomi.jpg" alt="多米音乐">
+					<span>多米音乐</span>
+					<i class="http://app.duomiyy.com/webradio/hao123"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/kuwo.jpg" alt="酷我音乐">
+					<span>酷我音乐</span>
+					<i class="http://player.kuwo.cn/webmusic/web/play?f=hao123"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/kugou.jpg" alt="酷狗音乐">
+					<span>酷狗音乐</span>
+					<i class="http://web.kugou.com/hao123.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/yinyuetai.jpg" alt="音悦TV">
+					<span>音悦TV</span>
+					<i class="http://www.yinyuetai.com/baidu/hao123"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/jiuku.jpg" alt="九酷音乐">
+					<span>九酷音乐</span>
+					<i class="http://www.9ku.com/fm"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/qq.jpg" alt="QQ音乐">
+					<span>QQ音乐</span>
+					<i class="http://y.qq.com/webplayer/index.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/sohu.jpg" alt="搜狐视频">
+					<span>搜狐视频</span>
+					<i class="http://tv.sohu.com/upload/360/index.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/sohu.jpg" alt="搜狐视频">
+					<span>搜狐视频</span>
+					<i class="http://tv.sohu.com/upload/360/index.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/sohu.jpg" alt="搜狐视频">
+					<span>搜狐视频</span>
+					<i class="http://tv.sohu.com/upload/360/index.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/sohu.jpg" alt="搜狐视频">
+					<span>搜狐视频</span>
+					<i class="http://tv.sohu.com/upload/360/index.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/sohu.jpg" alt="搜狐视频">
+					<span>搜狐视频</span>
+					<i class="http://tv.sohu.com/upload/360/index.html"></i>
+				</a>
+				<a class="item" href="javascript:void(0)">
+					<img src="./img/sohu.jpg" alt="搜狐视频">
+					<span>搜狐视频</span>
+					<i class="http://tv.sohu.com/upload/360/index.html"></i>
+				</a>
+			</div>
+		</div>
+		<div class="mokuai1 rm">
+			<div class="mokuai1_top"></div>
+			<div class="mokuai1_con">
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+				<a class="item" href="#">
+					<img src="./img/liuyan.jpg" alt="给我留言">
+					<span>给我留言</span>
+				</a>
+			</div>
+		</div>
+		<div class="xuanxiang">
+			<span class="dian dian1"></span>
+			<span class="dian"></span>
+			<span class="dian"></span>
+		</div>
+		<div class="zhao">
+			<div class="show">
+				<div class="show_top"></div>
+				<div class="show_con">
+					
+				</div>
+			</div>
+			<div class="dianwo">x</div>
+		</div>
+	<script>
+			window.onload = function(){
+				var btn = document.getElementsByClassName("hf")[0];
+				var gg = document.getElementsByClassName("bg-nav")[0];
+				var pic = document.getElementsByClassName("pic")[0].children[0].children;
+				var pics = document.images;
+				var dbb = document.body;
+				btn.onclick = function(){
+					gg.style.height = '350px';		
+				}
+					for(var i=0;i<pic.length;i++){
+						pic[i].onclick = function(){
+							j = this.getAttribute('tagesrc');
+							dbb.style.background="url('images/"+j+"')";
+							gg.style.height = '0px';
+						}					
+					}
+
+					 //选项卡
+			    $('.dian').click(function(){
+		        	$('.dian').css({background:'#227CC0'});
+		        	$(this).css({background:'#E4393C'});
+		       		$('.mokuai1').hide();
+		        	$('.mokuai1').eq($(this).index()).slideDown(1000);
+		    	});
+			    $('.item').click(function(){
+					$('.zhao').fadeIn(1500);
+					//console.log($(this).find('i').attr('class'));
+					var a = $(this).find('i').attr('class');
+					$('.show_con').html('<iframe src="'+a+'" width=100% height=100%></iframe>');
+				});
+		    	$('.dianwo').click(function(){
+					$('.zhao').hide();
+				});
+				
+				//关闭默认右键
+				$(document).ready(function(){
+					$(document).bind("contextmenu",function(e){
+						return false;
+					});
+				});
+			}
+	</script>
+	</body>
+</html>
